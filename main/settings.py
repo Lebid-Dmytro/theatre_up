@@ -124,19 +124,15 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle"
+        "rest_framework.throttling.UserRateThrottle",
     ],
-    "DEFAULT_THROTTLE_RATES": {
-        "anon": "10/minute",
-        "user": "30/minute"
-    }
+    "DEFAULT_THROTTLE_RATES": {"anon": "10/minute", "user": "30/minute"},
 }
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Cinema service",
-    "DESCRIPTION":
-        "REST API for a cinema service: "
-        "manage users, halls, movies, sessions, orders, and tickets",
+    "DESCRIPTION": "REST API for a cinema service: "
+    "manage users, halls, movies, sessions, orders, and tickets",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
     "SWAGGER_UI_SETTINGS": {
@@ -150,5 +146,5 @@ SPECTACULAR_SETTINGS = {
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-    "ROTATE_REFRESH_TOKENS": True
+    "ROTATE_REFRESH_TOKENS": True,
 }
