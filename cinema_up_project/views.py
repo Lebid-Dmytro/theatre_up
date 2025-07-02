@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .serializers import *
-from .permissions import IsAdminOrReadOnly, IsOwner
+from .permissions import IsAdminOrReadOnly, IsOwner, IsOwnerOrReadOnly
 
 
 class PlayViewSet(viewsets.ModelViewSet):
@@ -20,9 +20,12 @@ class PerformanceViewSet(viewsets.ReadOnlyModelViewSet):
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
     def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):
+            return Reservation.objects.none()
+
         return Reservation.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
