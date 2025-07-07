@@ -28,6 +28,7 @@ pluggy==1.6.0
 Pygments==2.19.1
 PyJWT==2.9.0
 pytest==8.4.0
+python-dotenv==1.1.1
 pytest-django==4.11.1
 pytz==2025.2
 PyYAML==6.0.2
@@ -37,3 +38,5 @@ rpds-py==0.25.1
 sqlparse==0.5.3
 uritemplate==4.2.0
 urllib3==2.4.0
+pillow==11.3.0
+psycopg2==2.9.10
