@@ -1,8 +1,15 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
-from .serializers import *
-from .permissions import IsAdminOrReadOnly, IsOwner, IsOwnerOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
+from .serializers import (
+    Play,
+    PlaySerializer,
+    Performance,
+    PerformanceSerializer,
+    Reservation,
+    ReservationSerializer
+)
 
 
 class PlayViewSet(viewsets.ModelViewSet):
