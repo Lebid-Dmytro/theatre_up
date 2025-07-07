@@ -18,10 +18,21 @@ from .serializers import (
 
 @extend_schema(
     summary="Manage plays",
-    description="Allows listing, creating, updating and deleting plays. Supports filtering by title and genre.",
+    description="Allows listing, creating, updating and deleting "
+                "plays. Supports filtering by title and genre.",
     parameters=[
-        OpenApiParameter(name="title", description="Filter by title", required=False, type=str),
-        OpenApiParameter(name="genre", description="Filter by genre ID", required=False, type=int),
+        OpenApiParameter(
+            name="title",
+            description="Filter by title",
+            required=False,
+            type=str
+        ),
+        OpenApiParameter(
+            name="genre",
+            description="Filter by genre ID",
+            required=False,
+            type=int
+        ),
     ]
 )
 class PlayViewSet(viewsets.ModelViewSet):
@@ -45,11 +56,18 @@ class PlayViewSet(viewsets.ModelViewSet):
         summary="Upload image for a play",
         description="Upload an image for a specific play by ID.",
         methods=["POST"],
-        request={"multipart/form-data": {"image": {"type": "string", "format": "binary"}}},
-        responses={200: {"type": "object", "properties": {"message": {"type": "string"}}}},
+        request={"multipart/form-data": {
+            "image": {"type": "string", "format": "binary"}}
+        },
+        responses={200: {
+            "type": "object",
+            "properties": {"message": {"type": "string"}}}
+        },
     )
-    @action(detail=True, methods=["post"], permission_classes=[IsAdminOrReadOnly],
-            parser_classes=[MultiPartParser, FormParser])
+    @action(
+        detail=True, methods=["post"],
+        permission_classes=[IsAdminOrReadOnly],
+        parser_classes=[MultiPartParser, FormParser])
     def upload_image(self, request, pk=None):
         play = self.get_object()
         image = request.FILES.get("image")
@@ -68,15 +86,32 @@ class PlayViewSet(viewsets.ModelViewSet):
 
 @extend_schema(
     summary="List performances",
-    description="List performances with optional filtering by play title or genre. Supports sorting by show_time.",
+    description="List performances with optional filtering by play "
+                "title or genre. Supports sorting by show_time.",
     parameters=[
-        OpenApiParameter(name="title", description="Filter by play title", required=False, type=str),
-        OpenApiParameter(name="genre", description="Filter by genre ID", required=False, type=int),
-        OpenApiParameter(name="sort_by", description="Sort by show_time (date or -date)", required=False, type=str),
+        OpenApiParameter(
+            name="title",
+            description="Filter by play title",
+            required=False,
+            type=str
+        ),
+        OpenApiParameter(
+            name="genre",
+            description="Filter by genre ID",
+            required=False,
+            type=int
+        ),
+        OpenApiParameter(
+            name="sort_by",
+            description="Sort by show_time (date or -date)",
+            required=False,
+            type=str
+        ),
     ]
 )
 class PerformanceViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Performance.objects.select_related("play", "theatre_hall").prefetch_related("play__genres")
+    queryset = Performance.objects.select_related(
+        "play", "theatre_hall").prefetch_related("play__genres")
     serializer_class = PerformanceSerializer
     permission_classes = [AllowAny]
 
@@ -100,7 +135,8 @@ class PerformanceViewSet(viewsets.ReadOnlyModelViewSet):
 
 @extend_schema(
     summary="Manage reservations",
-    description="Authenticated users can view and create their own reservations only."
+    description="Authenticated users can view and "
+                "create their own reservations only."
 )
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.prefetch_related("tickets", "user")

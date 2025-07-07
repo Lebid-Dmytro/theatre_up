@@ -12,11 +12,6 @@ class Genre(models.Model):
     def __str__(self):
         return self.name
 
-    def play_image_upload_path(instance, filename):
-        ext = filename.split(".")[-1]
-        filename = f"uploaded-{slugify(instance.title)}.{ext}"
-        return os.path.join("plays/", filename)
-
 
 class Actor(models.Model):
     first_name = models.CharField(max_length=255)
@@ -41,7 +36,11 @@ class Play(models.Model):
     description = models.TextField()
     genres = models.ManyToManyField("Genre", related_name="plays")
     actors = models.ManyToManyField("Actor", related_name="plays")
-    image = models.ImageField(upload_to=play_image_upload_path, blank=True, null=True)
+    image = models.ImageField(
+        upload_to=play_image_upload_path,
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.title
@@ -73,12 +72,16 @@ class Performance(models.Model):
         ordering = ["-show_time"]
 
     def __str__(self):
-        return f"{self.play.title} - {self.play.theatre_hall} at {self.show_time}"
+        return (f"{self.play.title} - {self.play.theatre_hall} "
+                f"at {self.show_time}")
 
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
 
     class Meta:
         ordering = ["-created_at"]
