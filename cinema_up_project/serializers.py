@@ -5,7 +5,7 @@ from .models import Play, Performance, Reservation, Ticket
 class PlaySerializer(serializers.ModelSerializer):
     class Meta:
         model = Play
-        fields = ["id", "title", "description", "genres", "actors"]
+        fields = ["id", "title", "description", "genres", "actors", "image"]
 
 
 class PerformanceSerializer(serializers.ModelSerializer):
