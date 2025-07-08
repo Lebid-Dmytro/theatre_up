@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "debug_toolbar",
-    "cinema_up_project",
+    "theatre_up_project",
 ]
 
 MIDDLEWARE = [
@@ -152,8 +152,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Cinema service",
-    "DESCRIPTION": "REST API for a cinema service: manage users, halls, movies, sessions, orders, and tickets",
+    "TITLE": "Theatre service",
+    "DESCRIPTION": "REST API for a theatre service: manage users, halls, movies, sessions, orders, and tickets",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": True,
 }
