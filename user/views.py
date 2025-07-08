@@ -10,7 +10,10 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
     def get(self, request, *args, **kwargs):
-        return Response({"message": "Це endpoint для реєстрації, використовуйте POST"}, status=200)
+        return Response(
+            {"message": "Це endpoint для реєстрації, використовуйте POST"},
+            status=200
+        )
 
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
