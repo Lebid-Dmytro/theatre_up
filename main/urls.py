@@ -13,7 +13,7 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("cinema_up_project.urls")),
+    path("api/", include("theatre_up_project.urls")),
     path("api/user/", include("user.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/token/", obtain_auth_token),

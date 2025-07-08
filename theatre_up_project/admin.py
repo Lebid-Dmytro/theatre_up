@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from cinema_up_project.models import (
+from .models import (
     Genre,
     Actor,
     Play,
