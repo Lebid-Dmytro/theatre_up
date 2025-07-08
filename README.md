@@ -5,6 +5,8 @@ Despite the name, this platform is not for movies, but for **live plays and thea
 Users can browse upcoming shows, view detailed information, and make reservations.  
 Administrators can manage performances, plays, and seating.
 
+<img width="805" alt="Screenshot 2025-07-08 at 2 43 39 PM" src="https://github.com/user-attachments/assets/73480354-b1aa-4ac0-b3ee-bcebec5e7ba8" />
+
 ---
 
 ## 🔧 Features
