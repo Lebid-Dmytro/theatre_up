@@ -1,6 +1,6 @@
-# 🎭 Cinema Up API
+# 🎭 Theatre Up API
 
-**Cinema Up** is a RESTful API for a stage performance booking website.  
+**Theatre Up** is a RESTful API for a stage performance booking website.  
 Despite the name, this platform is not for movies, but for **live plays and theater performances**.  
 Users can browse upcoming shows, view detailed information, and make reservations.  
 Administrators can manage performances, plays, and seating.
@@ -66,6 +66,6 @@ Administrators can manage performances, plays, and seating.
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/cinema_up.git
-cd cinema_up
+git clone https://github.com/Lebid-Dmytro/theatre_up.git
+cd theatre_up
 docker-compose up --build
